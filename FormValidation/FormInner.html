@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</head>
+<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <h1><marquee>Form Validation</marquee></h1> 
+    <form name="myForm" onsubmit="return validateForm()" style="margin: 38px;">
+        <div class="row">
+            <div class="col-md-2">
+                <label>First Name:</label><br>
+                <input type="text" placeholder="First Name" name="Fname">
+                <p id="fname" style="color: red;"></p>
+            </div>
+            <div class="col-md-2">
+               <label>Last Name:</label><br>
+               <input type="text" placeholder="Last Name"  name="Lname" >
+               <p id="lname"></p>
+            </div>
+            <div class="col-md-8">
+              <label>Email:</label><br>
+              <input type="email" placeholder="Email"  name="Email">
+              <p id="email"></p>
+            </div>
+            <div class="col-md-2">
+              <label>Mobile Number:</label><br>
+              <input type="number" placeholder="Number"  name="Mobile">
+              <p id="mobileno"></p>
+            </div>
+            <div class="col-md-2">
+               <label>Address: </label><br>
+               <textarea name="Address" placeholder="Type Your Address"></textarea>
+               <p id="address"></p>
+            </div>
+            <div class="col-md-8">
+               <label>Create Password:</label><br>
+               <input type="password" placeholder="create password"  name="createpassword">
+               <p id="createpass"></p>
+            </div>
+            <div class="col-md-2">
+               <label>Confirm Password:</label><br>
+               <input type="password" placeholder="confirm password"  name="confirmpassword">
+               <p id="confirmpass"></p>
+            </div>
+            <div class="col-md-2">
+                <label>Country:</label><br>
+                <select name="country" >
+                   <option value=""> Select a country</option>
+                   <option value="India">India</option>
+                   <option value="America">America</option>
+                   <option value="China">China</option>
+                   <option value="Australia">Australia</option>
+                </select>
+                <p id="country"></p>
+            </div>
+            <div class="col-md-8">
+                <label>State:</label><br>
+                <select name="State">
+                   <option value=""> Select a state</option>
+                   <option value="Tamil Nadu">Tamil Nadu</option>
+                   <option value="Kerala">Kerala</option>
+                   <option value="Andrapradesh">China</option>
+                   <option value="Karnataka">Karnataka</option>
+                </select>
+                <p id="state"></p>
+            </div>
+            <div class="col-md-2">
+                <label>Gender:</label><br>
+                <input type="radio" name="Gender"> Male
+                <input type="radio" name="Gender"> Female
+                <input type="radio" name="Gender"> Other
+                <p id="gender"></p>
+            </div>
+            <div class="col-md-2">
+                 <label>Date of Birth:</label><br>
+                 <input type="date"  name="Birthday">
+                 <p id="dob"></p>
+            </div>
+            <div class="col-md-8">
+                 <input type="checkbox" name="checkbox"> I Agree the Terms&Condition<br>
+                 <input type="checkbox" name="checkbox"> I Agree the Your Seervices
+                 <p id="checkb"></p>
+             </div>
+        </div>
+        <input type="submit">
+        <input type="reset"> 
+    </form>
+    <script>
+        function validateForm(){
+            let fname = document.forms["myForm"]["Fname"].value;
+            let lname = document.forms["myForm"]["Lname"].value;
+            let email = document.forms["myForm"]["Email"].value;
+            let mobile = document.forms["myForm"]["Mobile"].value;
+            let address = document.forms["myForm"]["Address"].value;
+            let createpass = document.forms["myForm"]["createpassword"].value;
+            let confirmpass = document.forms["myForm"]["confirmpassword"].value;
+            let country = document.forms["myForm"]["country"].value;
+            let state = document.forms["myForm"]["State"].value;
+            let gender = document.forms["myForm"]["Gender"].value;
+            let dob = document.forms["myForm"]["Birthday"].value;
+            let checkbox = document.forms["myForm"]["checkbox"].value;
+            if (fname == ""){
+                document.getElementById("fname").innerHTML="Please Fill the First Name";
+                return false;
+            } else if (fname.length > 10) {
+                document.getElementById("fname").innerHTML="Maximum Length is 10";
+                return false;
+            } else if (lname == "") {
+                document.getElementById("fname").innerHTML="";
+                document.getElementById("lname").innerHTML="Please Fill the Last Name";
+                return false;
+            } else if (lname.length > 10) {
+                document.getElementById("lname").innerHTML="Maximum Length is 10";
+                return false;
+            } else if (email == "") {
+                document.getElementById("lname").innerHTML="";
+                document.getElementById("email").innerHTML="Please Fill the email address";
+                return false;
+            } else if (mobile ==""){
+                document.getElementById("mobileno").innerHTML="Please Fill the Mobile Number";
+                return false;
+            } else if (mobile.length > 10 || mobile.length < 10){
+                document.getElementById("mobileno").innerHTML="Mobile Number Must be 10";
+                return false;
+            } else if (address ==""){
+                document.getElementById("mobileno").innerHTML="";
+                document.getElementById("address").innerHTML="Please Fill the Address";
+                return false;
+            } else if (createpass ==""){
+                document.getElementById("address").innerHTML="";
+                document.getElementById("createpass").innerHTML="Please Fill the Create Password";
+                return false;
+            } else if (confirmpass ==""){
+                document.getElementById("createpass").innerHTML="";
+                document.getElementById("confirmpass").innerHTML="Please Fill the Confirm Password";
+                return false;
+            } else if (createpass != confirmpass){
+                document.getElementById("confirmpass").innerHTML="Password does not match";
+                return false;
+            } else if (country ==""){
+                document.getElementById("confirmpass").innerHTML="";
+                document.getElementById("country").innerHTML="Please Fill the Country";
+                return false;
+            } else if (state ==""){
+                document.getElementById("country").innerHTML="";
+                document.getElementById("state").innerHTML="Please Fill the state";
+                return false;
+            } else if (gender ==""){
+                document.getElementById("state").innerHTML="";
+                document.getElementById("gender").innerHTML="Please Fill the gender";
+                return false;
+            } else if (dob ==""){
+                document.getElementById("gender").innerHTML="";
+                document.getElementById("dob").innerHTML="Please Fill the Date of Birth";
+                return false;
+            } else if (checkbox ==""){
+                document.getElementById("dob").innerHTML="";
+                document.getElementById("checkb").innerHTML="Please Fill the Check box";
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+    
+</body>
+</html>                                         
